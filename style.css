@@ -1,28 +1,34 @@
-/* --- Modern Dark Theme Variables --- */
+/* --- Electric Blue Student Theme --- */
 :root {
-    --bg-main: #121212;
-    --bg-card: #1e1e1e;
-    --text-main: #e0e0e0;
-    --text-muted: #9e9e9e;
-    --accent: #476fe6;
-    --accent-hover: #4d97cc;
-    --border: #333;
+    --bg-dark: #0a192f;        /* Deep Navy */
+    --bg-card: #112240;        /* Royal Navy */
+    --accent: #00d2ff;         /* Electric Blue */
+    --accent-glow: rgba(0, 210, 255, 0.3);
+    --text-bright: #e6f1ff;    /* Crisp White/Blue */
+    --text-dim: #8892b0;       /* Muted Slate */
+    --glass: rgba(17, 34, 64, 0.7);
+}
+
+* {
+    box-sizing: border-box;
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg-main);
-    color: var(--text-main);
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-bright);
     margin: 0;
-    padding: 0;
     line-height: 1.6;
+    background-image: radial-gradient(circle at 50% 50%, #112240 0%, #0a192f 100%);
 }
 
-/* --- Navigation --- */
+/* --- Smooth Navigation --- */
 nav {
-    background-color: var(--bg-card);
+    background: var(--glass);
+    backdrop-filter: blur(10px);
     padding: 1rem 0;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(0, 210, 255, 0.1);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -34,149 +40,132 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-nav a {
-    color: var(--text-main);
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background 0.2s, color 0.2s;
-}
-
-nav a:hover, nav a.active {
-    background-color: var(--accent);
-    color: #000;
-}
-
-/* --- Layout & Header --- */
-header {
-    text-align: center;
-    padding: 4rem 2rem 2rem;
-}
-
-header h1 {
-    font-size: 3rem;
-    margin: 0 0 0.5rem 0;
-    color: var(--accent);
-}
-
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-.page-title {
-    border-bottom: 2px solid var(--border);
-    padding-bottom: 0.5rem;
-    margin-bottom: 2rem;
-    font-weight: 300;
-}
-
-/* --- Home Page Hero Section --- */
-.hero {
-    text-align: center;
-    padding: 2rem 2rem 4rem;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.hero h2 {
-    font-size: 2.5rem;
-    color: var(--text-main);
-    margin-bottom: 1rem;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    margin-bottom: 2.5rem;
-}
-
-.action-buttons {
-    display: flex;
-    justify-content: center;
     gap: 1.5rem;
     flex-wrap: wrap;
 }
 
-/* --- Project Cards --- */
+nav a {
+    color: var(--text-bright);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+nav a:hover, nav a.active {
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* --- Bold Header --- */
+header {
+    text-align: center;
+    padding: 6rem 2rem 3rem;
+}
+
+header h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    margin: 0;
+    background: linear-gradient(to right, #fff, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    color: var(--accent);
+    font-family: monospace;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* --- Cool Cards --- */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
 }
 
 .card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    background: var(--bg-card);
+    border-radius: 10px;
     padding: 2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    transform: translateY(-10px);
     border-color: var(--accent);
+    box-shadow: 0 10px 30px -15px rgba(0, 210, 255, 0.3);
 }
 
 .card h3 {
-    margin-top: 0;
+    margin: 0 0 10px;
+    color: var(--text-bright);
     font-size: 1.5rem;
 }
 
 .tags {
+    font-family: monospace;
     color: var(--accent);
-    font-size: 0.9rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
 }
 
 .card p {
-    color: var(--text-muted);
-    flex-grow: 1;
+    color: var(--text-dim);
+    font-size: 0.95rem;
 }
 
+/* --- Buttons --- */
 .btn {
     display: inline-block;
-    background-color: transparent;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--accent);
     color: var(--accent);
-    border: 2px solid var(--accent);
-    padding: 0.6rem 1.2rem;
     text-decoration: none;
-    border-radius: 6px;
-    margin-top: 1.5rem;
-    text-align: center;
+    border-radius: 4px;
+    font-size: 0.85rem;
     font-weight: bold;
-    transition: all 0.2s;
+    margin-top: auto;
+    background: transparent;
 }
 
 .btn:hover {
-    background-color: var(--accent);
-    color: #000;
+    background: var(--accent-glow);
+    color: white;
 }
 
-/* --- Footer --- */
+/* --- Hero (Home Page Only) --- */
+.hero {
+    text-align: center;
+    padding: 5vh 0;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: var(--text-dim);
+    font-size: 1.1rem;
+}
+
 footer {
     text-align: center;
-    padding: 3rem 1rem;
-    color: var(--text-muted);
-    border-top: 1px solid var(--border);
-    margin-top: 4rem;
-}
-
-footer a {
-    color: var(--accent);
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
+    padding: 4rem;
+    color: var(--text-dim);
+    font-size: 0.8rem;
 }
